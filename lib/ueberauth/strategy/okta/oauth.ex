@@ -82,7 +82,7 @@ defmodule Ueberauth.Strategy.Okta.OAuth do
       |> Keyword.fetch!(:userinfo_url)
 
     client(opts)
-    |> Client.get(userinfo_url, headers, opts)
+    |> Client.get(userinfo_url, headers)
     |> case do
       {:ok, %{status_code: 200, body: user}} -> {:ok, user}
       {:ok, result} -> {:error, result}
